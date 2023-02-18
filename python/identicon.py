@@ -79,19 +79,85 @@ def do_all_tests(pattern):
 
 
 def main():
-    grid = """
-0 0 1
-1 0 0
-0 0 1
-1 0 1
-1 0 1"""
+    grid1 = """
+00000
+01110
+01110
+00000
+00100"""
 
-    grid = grid.strip().split("\n")
+    grid2 = """
+01010
+11111
+01110
+00100
+11111"""
+
+    grid3 = """
+11111
+10101
+11111
+10101
+01010"""
+
+    grid4 = """
+01010
+00100
+01010
+10101
+01110"""
+
+    grid5 = """
+10001
+00100
+00000
+00100
+11111"""
+
+    grid6 = """
+10101
+10001
+01110
+10101
+10101"""
+
+    grid7 = """
+00000
+00100
+10001
+01010
+00000"""
+
+    grid8 = """
+10001
+01110
+10001
+00000
+11011"""
+
+    grid9 = """
+00100
+01110
+00000
+10001
+10001"""
+
+    grid10 = """
+11011
+11111
+00000
+11011
+11111"""
+
+    grids = [grid1, grid2, grid3, grid4, grid5, grid6, grid7, grid8, grid9, grid10]
+
+    grids_ = [grid.strip().split("\n") for grid in grids]
 
     # grid = sys.stdin.readlines()  # uncomment this to echo your own grid
-    pattern = parse_grid(grid)
+    for grid in grids_:
+        pattern = parse_grid(grid)
 
-    do_all_tests(pattern)
+        do_all_tests(pattern)
 
 
 if __name__ == "__main__":

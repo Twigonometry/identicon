@@ -1,6 +1,8 @@
 # identicon
 
-Silly little tool to reverse-map Github identicons to user accounts.
+Silly little tool to reverse-map Github identicons to user accounts. (original repo: https://github.com/kashav/identicon)
+
+Used for a PwnED 4 Challenge (thanks to sigint.mx for the chall)
 
 Built by inspecting [dgraham/identicon][dgraham] and [stewartlord/identicon.js][identicon.js], and just doing the reverse of what they're doing.
 
