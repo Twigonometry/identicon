@@ -1,7 +1,7 @@
 import hashlib
 import random
 import sys
-
+import numpy as np
 
 def is_parity_match(c, v):
     return c == "x" or v & 1 == int(c)
@@ -68,9 +68,17 @@ def parse_grid(grid):
     ABCDEFGHIJKLMNO
     """
 
-    rows = [row.strip().split(" ") for row in grid]
-    return "".join(rows[row][col] for col in range(2, -1, -1) for row in range(0, 5))
-
+    #rows = [row.strip().split(" ") for row in grid]
+    #print(rows)
+    #return "".join(rows[row][col] for col in range(2, -1, -1) for row in range(0, 5))
+    
+    #hardcode to 5 x 5 for now as wanna just finish chall
+    
+    stack = np.stack(grid)
+    #print(stack)
+    #print(stack[4][:])
+    #print(type(stack[4][:]))
+    return("".join(stack[4][:]) + "".join(stack[3][:]) + "".join(stack[2][:]) + "".join(stack[1][:]) + "".join(stack[0][:]))
 
 def do_all_tests(pattern):
     for i in range(100_000_000):
@@ -152,9 +160,18 @@ def main():
     grids = [grid1, grid2, grid3, grid4, grid5, grid6, grid7, grid8, grid9, grid10]
 
     grids_ = [grid.strip().split("\n") for grid in grids]
+    
+    #print(grids_)
 
     # grid = sys.stdin.readlines()  # uncomment this to echo your own grid
     for grid in grids_:
+        for i, row in enumerate(grid):
+            #print(row)
+            row = np.array([i for i in row])
+            #print(row)
+            grid[i] = row
+            
+        #print(grid)
         pattern = parse_grid(grid)
 
         do_all_tests(pattern)
